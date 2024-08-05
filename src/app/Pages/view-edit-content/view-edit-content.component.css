@@ -1,0 +1,84 @@
+/* view-edit-content.component.css */
+
+.container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.text-end .btn-danger {
+  background-color: #d9534f;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.text-end .btn-danger:hover {
+  background-color: #c9302c;
+  transform: scale(1.05);
+}
+
+.note-content h5 {
+  color: #333;
+}
+
+.note-actions .btn-info {
+  background-color: #5bc0de;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.note-actions .btn-info:hover {
+  background-color: #31b0d5;
+  transform: scale(1.05);
+}
+
+.note-actions .btn-danger {
+  background-color: #d9534f;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.note-actions .btn-danger:hover {
+  background-color: #c9302c;
+  transform: scale(1.05);
+}
+
+.fixed-create-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.fixed-create-icon .btn-primary {
+  background-color: #0275d8;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.fixed-create-icon .btn-primary:hover {
+  background-color: #025aa5;
+  transform: scale(1.1);
+}
+
+.modal-content {
+  border-radius: 15px;
+}
+
+.modal-header {
+  background-color: #0275d8;
+  color: white;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.alert-info {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #31708f;
+}

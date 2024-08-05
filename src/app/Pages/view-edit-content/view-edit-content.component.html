@@ -1,0 +1,121 @@
+<!-- view-edit-content.component.html -->
+<div class="container">
+
+  <!-- Logout Button -->
+  <div class="text-end mt-3">
+    <button (click)="logout()" class="btn btn-danger">Log out</button>
+  </div>
+
+
+
+  <div class="row">
+    <!-- Welcome Message -->
+    <div class="col-md-12 mb-4 text-center">
+      <h2 class="text-primary">Welcome, {{ username }}!</h2>
+    </div>
+
+    <!-- Notes List -->
+    <div class="col-md-12">
+      <h3 class="text-secondary mb-4">Your Notes</h3>
+      <div class="list-group">
+        <li *ngFor="let content of contents" class="list-group-item d-flex justify-content-between align-items-start border-0 shadow-sm mb-3 rounded">
+          <div class="note-content">
+            <h5 class="mb-1">{{ content.Title }}</h5>
+            <p class="mb-0 text-muted">{{ content.Body }}</p>
+          </div>
+          <div class="note-actions">
+            <button class="btn btn-info btn-sm me-2" (click)="openEditModal(content)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="onDeleteContent(content.Id)">Delete</button>
+          </div>
+        </li>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Note Icon -->
+  <div class="fixed-create-icon">
+    <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#createNoteModal">
+      <i class="bi bi-plus-lg"></i>
+    </button>
+  </div>
+
+  <!-- Create Note Modal -->
+  <div class="modal fade" id="createNoteModal" tabindex="-1" aria-labelledby="createNoteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createNoteModalLabel">Create New Note</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="createForm" (ngSubmit)="onCreateSubmit()">
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input
+                type="text"
+                id="title"
+                class="form-control"
+                formControlName="Title"
+                placeholder="Enter note title"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="body" class="form-label">Body</label>
+              <textarea
+                id="body"
+                class="form-control"
+                formControlName="Body"
+                rows="4"
+                placeholder="Enter note body"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Note Modal -->
+  <div class="modal fade" id="editNoteModal" tabindex="-1" aria-labelledby="editNoteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editNoteModalLabel">Edit Note</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="editForm" (ngSubmit)="onEditSubmit()">
+            <div class="mb-3">
+              <label for="edit-title" class="form-label">Title</label>
+              <input
+                type="text"
+                id="edit-title"
+                class="form-control"
+                formControlName="Title"
+                placeholder="Enter note title"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="edit-body" class="form-label">Body</label>
+              <textarea
+                id="edit-body"
+                class="form-control"
+                formControlName="Body"
+                rows="4"
+                placeholder="Enter note body"
+              ></textarea>
+            </div>
+            <input type="hidden" formControlName="Id" />
+            <button type="submit" class="btn btn-primary w-100">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feedback Message -->
+  <div *ngIf="message" class="alert alert-info mt-3">{{ message }}</div>
+</div>
+
+
